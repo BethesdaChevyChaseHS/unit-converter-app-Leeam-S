@@ -23,7 +23,7 @@ public class App {
         // fourth is vertical gap
         // when you add your new converter calculators, you will want to change the row
         // number from 1 to 2/3
-        frame.setLayout(new GridLayout(1, 4, 5, 5));
+        frame.setLayout(new GridLayout(3, 4, 5, 5));
 
         JLabel inputLabel1 = new JLabel("Fahrenheit:");
         JTextField inputField1 = new JTextField();
@@ -59,10 +59,58 @@ public class App {
         frame.add(convertButton1);
         frame.add(outputLabel1);
 
-        //add your other rows to the frame here
+        // Second row: Celcius to Fahrenheit
+        JLabel inputLabel2 = new JLabel("Celcius:");
+        JTextField inputField2 = new JTextField();
+        JButton convertButton2 = new JButton("Convert");
+        JLabel outputLabel2 = new JLabel("Fahrenheit");
+        
+
+        convertButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double celsius = Double.parseDouble(inputField2.getText());
+                    double fahrenheit = (celsius * 9 / 5) + 32;
+                    outputLabel2.setText(String.format("Fahrenheit: %.2f", fahrenheit));
+                } catch (NumberFormatException ex) {
+                    outputLabel2.setText("Fahrenheit: Invalid input");
+                }
+            }
+        });
+
+        frame.add(inputLabel2);
+        frame.add(inputField2);
+        frame.add(convertButton2);
+        frame.add(outputLabel2);
+
+        // Third row: Miles to Kilometers
+
+
+        JLabel inputLabel3 = new JLabel("Miles:");
+        JTextField inputField3 = new JTextField();
+        JButton convertButton3 = new JButton("Convert");
+        JLabel outputLabel3 = new JLabel("Kilometers:");
+
+        convertButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double miles = Double.parseDouble(inputField3.getText());
+                    double kilometers = miles * 1.60934;
+                    outputLabel3.setText(String.format("Kilometers: %.2f", kilometers));
+                } catch (NumberFormatException ex) {
+                    outputLabel3.setText("Kilometers: Invalid input");
+                }
+            }
+        });
+
+        frame.add(inputLabel3);
+        frame.add(inputField3);
+        frame.add(convertButton3);
+        frame.add(outputLabel3);
+
 
         //you will also want to change the size of the frame when you add more rows
-        frame.setSize(500, 80);
+        frame.setSize(500, 250);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
